@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_migrate import Migrate
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -13,9 +14,10 @@ load_dotenv()
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = 'thisisasecret'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'db.sqlite')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ravi:ukhKm1DjfUe8jvXmR4wmuR67dwJkg1iT@dpg-cfogbf2rrk0fd9osmejg-a.oregon-postgres.render.com/todolist_ibja'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

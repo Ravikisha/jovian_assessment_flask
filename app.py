@@ -4,8 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user,login_required,logout_user,current_user
-from flask_login import UserMixin
 from dotenv import load_dotenv
+from flask_login import UserMixin
 load_dotenv()
 
 
@@ -14,7 +14,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = 'thisisasecret'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'db.sqlite')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL3')
 db = SQLAlchemy(app)
 
 class User(UserMixin, db.Model):
@@ -35,7 +35,6 @@ class Task(db.Model):
     
     def __repr__(self) -> str:
         return f"{self.id} - {self.title} - {self.description}"
-
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'

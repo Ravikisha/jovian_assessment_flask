@@ -12,7 +12,7 @@ load_dotenv()
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = 'thisisasecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL3')
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ravi:ukhKm1DjfUe8jvXmR4wmuR67dwJkg1iT@dpg-cfogbf2rrk0fd9osmejg-a.oregon-postgres.render.com/todolist_ibja'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -140,4 +140,4 @@ def clearTasks():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

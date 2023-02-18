@@ -14,7 +14,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = 'thisisasecret'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'db.sqlite')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL3')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 db = SQLAlchemy(app)
 
 class User(UserMixin, db.Model):

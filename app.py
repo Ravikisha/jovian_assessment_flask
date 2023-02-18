@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 from flask_login import UserMixin
 load_dotenv()
 
-
-
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = 'thisisasecret'
